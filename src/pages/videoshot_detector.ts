@@ -14,7 +14,9 @@ export class VideoShotDetector {
     videoPlayer: HTMLVideoElement; 
     canvasBacking: HTMLCanvasElement; 
     canvasContext: CanvasRenderingContext2D;
+
     currentTime: number;
+    lastThresholdValue = 0;
 
     ngOnInit() {
         this.videoPlayer = <HTMLVideoElement> document.getElementById("videoPlayer");
@@ -46,8 +48,16 @@ export class VideoShotDetector {
         var nextFrame = image.data;
         var calculatedPixelArray = lastFrame.map(function (_, i): number {return lastFrame[i] - nextFrame[i];});
         var accumulatedDifferences = calculatedPixelArray.reduce((a,b) => a + b);
-        //console.log(accumulatedDifferences);
-        if (accumulatedDifferences > 1000000) {
+        
+        var comparisonValue = accumulatedDifferences +  this.lastThresholdValue;
+        
+        if (comparisonValue < 800000) {
+            this.lastThresholdValue = 0;
+        } else if (comparisonValue >= 800000 && comparisonValue <= 8000000) {
+            this.lastThresholdValue = comparisonValue;
+        }
+        else {
+            this.lastThresholdValue = 0;
             var newShot = new Shot(this.currentTime, this.getImagefromImageData.bind(this)(image));
             this.shots.push(newShot);
             console.log(newShot.startTime);
