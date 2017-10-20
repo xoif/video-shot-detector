@@ -6,6 +6,6 @@
     <ul>
         <li *ngFor="let shot of shots">
          {{shot.startTime}}
-            <img src={{shot.image.src}} height=90 width=160>
+            <img src={{shot.image.src}} height=90 width=160  (click)="handleClick(shot.startTime)">
         </li>
     </ul>

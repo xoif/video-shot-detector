@@ -74,4 +74,8 @@ export class VideoShotDetector {
         image.src = this.canvasBacking.toDataURL();
         return image;
     }
+
+    handleClick(i: number){
+        this.videoPlayer.currentTime = i;
+    }
 }
