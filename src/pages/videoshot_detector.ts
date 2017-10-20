@@ -5,6 +5,7 @@ import { Shot } from '../models/Shot'
 @Component({
     selector: 'VideoShotDetector',
     templateUrl: './videoshot_detector.html',
+    styleUrls: ['./videoshot_detector.css']
   })
 
 export class VideoShotDetector {
@@ -59,7 +60,7 @@ export class VideoShotDetector {
         else {
             this.lastThresholdValue = 0;
             var newShot = new Shot(this.currentTime, this.getImagefromImageData.bind(this)(image));
-            this.shots.push(newShot);
+            this.shots.unshift(newShot);
             console.log(newShot.startTime);
         } 
     } 

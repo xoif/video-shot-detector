@@ -1,11 +1,16 @@
+<div id = "videoBox">
 <video id = "videoPlayer" src="./assets/bigbuckbunny.mp4" controls>
      <p>Webm</p>
 </video>
+</div>
 <canvas id="backing" style="display:none"></canvas>
-
-    <ul>
-        <li *ngFor="let shot of shots">
-         {{shot.startTime}}
-            <img src={{shot.image.src}} height=90 width=160  (click)="handleClick(shot.startTime)">
-        </li>
-    </ul>
+<div id="shots">
+        <div class="shot" *ngFor="let shot of shots">
+            <div class="img_box">
+                <img src={{shot.image.src}} (click)="handleClick(shot.startTime)">
+            </div>
+            <div class="text_box">
+                {{shot.startTime}}
+            </div>
+        </div>
+        </div>
