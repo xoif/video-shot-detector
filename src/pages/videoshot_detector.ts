@@ -51,7 +51,7 @@ export class VideoShotDetector {
         
         var comparisonValue = accumulatedDifferences +  this.lastThresholdValue;
         
-        if (comparisonValue < 1000000) {
+        if (comparisonValue < 1200000) {
             this.lastThresholdValue = 0;
         } else if (comparisonValue >= 1200000 && comparisonValue <= 8000000) {
             this.lastThresholdValue = comparisonValue;
