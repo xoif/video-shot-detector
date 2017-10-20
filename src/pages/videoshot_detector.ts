@@ -40,12 +40,12 @@ export class VideoShotDetector {
 
  calculateShotUsingTwinComparison(lastFrame: Uint8ClampedArray, nextFrame: Uint8ClampedArray){
         var detection;
-        //bring in nextFrame
-        var calculatedPixelArray = lastFrame.map(function (oldPixel: number, newPixel:number): number {return oldPixel - newPixel;});
+       
+        var calculatedPixelArray = lastFrame.map(function (_, i): number {return lastFrame[i] - nextFrame[i];});
         var accumulatedDifferences = calculatedPixelArray.reduce((a,b) => a + b);
-        console.log(accumulatedDifferences);
-        if (accumulatedDifferences > ?) {
+        //console.log(accumulatedDifferences);
+        if (accumulatedDifferences > 1000000) {
             console.log("shot");
-        }
-    }
+        } 
+    } 
 }
