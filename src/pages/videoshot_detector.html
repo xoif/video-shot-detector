@@ -1,0 +1,11 @@
+<video id = "videoPlayer" src="./assets/bigbuckbunny.mp4" controls>
+     <p>Webm</p>
+</video>
+<canvas id="backing" style="display:none"></canvas>
+
+    <ul>
+        <li *ngFor="let shot of shots">
+         {{shot.startTime}}
+            <img src={{shot.image.src}} height=90 width=160>
+        </li>
+    </ul>

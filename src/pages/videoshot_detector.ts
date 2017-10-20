@@ -4,7 +4,7 @@ import { Shot } from '../models/Shot'
 
 @Component({
     selector: 'VideoShotDetector',
-    templateUrl: './video_shot_detector.html',
+    templateUrl: './videoshot_detector.html',
   })
 
 export class VideoShotDetector {
